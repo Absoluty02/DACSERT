@@ -1,0 +1,26 @@
+# Task
+Given the input of the first job, complete the sentence and complete all the inferences, also the missing ones,
+specifying the inference type, with two outputs:
+one using common sense reasoning
+one using default reasoning
+briefly explain the reasoning process for each output.
+You have to provide at least one completion for each inference category.
+
+# Response format
+Follow this schema:
+
+Second Job
+Commonsense reasoning
+Sentence:
+Inferences:
+    (one completion for each reference)
+Reasoning:
+
+Default reasoning
+Sentence:
+Inferences:
+    (one completion for each reference)
+Reasoning:
+
+
+

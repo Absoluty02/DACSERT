@@ -1,0 +1,17 @@
+# Task
+Choose the most typical inference only among the categories that contain at least one inference.
+Ignore categories that are empty.
+Explain:
+why you chose it
+which reasoning you used (common sense or default)
+why you used this type of reasoning and not the other one in this context
+
+# Response format
+Follow this schema:
+
+First Job
+Most typical inference: ... (I want only the name of the inference here, like "xIntent", not other things)
+Why:
+Used reasoning:
+Explanation:
+

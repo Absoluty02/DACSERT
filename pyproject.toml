@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "dacsert"
+version = "0.1.0"
+description = ""
+authors = ["Jacopo Garofalo <106023196+Absoluty02@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pandas = "^2.3.3"
+openai = "^2.8.1"
+anthropic = "^0.74.1"
+python-dotenvx = "^0.3.0"
+python-dotenv = "^1.2.1"
+google-genai = "^1.52.0"
+matplotlib = "^3.10.7"
+seaborn = "^0.13.2"
+scikit-learn = "^1.7.2"
+langchain-core = "^1.1.0"
+langchain-openai = "^1.0.3"
+langchain-google-genai = "^3.1.0"
+langchain-anthropic = "^1.1.0"
+pydantic = "^2.12.4"
+typer = "^0.20.0"
+richer = "^0.1.6"
+typeguard = "^4.4.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,21 @@
+# Task
+You are presented with:
+An ATOMIC dataset entry with its sentence and inferences
+Your previous choice of the most typical inference
+The opinions and choices of other LLMs
+
+Review this information and decide:
+Do you maintain your original choice?
+Or do you change your opinion based on the other LLMs' perspectives?
+
+Explain briefly:
+Your decision (maintain or change)
+Type of reasoning used (maintain or change)
+Why you made this decision
+What influenced you (if you changed) or why you remain confident (if you maintained)
+
+Response format
+Decision: [MAINTAIN or CHANGE]
+New choice (if changed): [inference category name or "N/A"]
+Type of reasoning (if changed): DR or CSR
+Explanation: [brief reasoning, max 50 words]
