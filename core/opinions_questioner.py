@@ -21,10 +21,6 @@ def gemini_parser(gemini_client, model, input_prompt, first_job_prompt, second_j
         contents=[the_prompt, third_prompt],
     )
 
-    #result = manage_llm_response(response.candidates[0].content.parts[0].text, "gemini")
-
-    # print(response.candidates[0].content.parts[0].text)
-
     decision, choice, reasoning, why = extract_changes(response.candidates[0].content.parts[0].text)
 
     return {"decision": decision,
@@ -46,13 +42,6 @@ def gpt_parser(gpt_client, model, input_prompt, first_job_prompt, second_job_pro
         ]
     )
 
-    print(response.choices[0].message.content)
-    #raw_result = manage_llm_response(response.choices[0].message.content)
-    #print("RAW RESULT:", repr(raw_result))
-    #print(raw_result)
-    #result = json.loads(raw_result)
-    #print(type(result))
-
     decision, choice, reasoning, why = extract_changes(response.choices[0].message.content)
 
     return {"decision": decision,
@@ -73,8 +62,6 @@ def claude_parser(claude_client, model, input_prompt, first_job_prompt, second_j
             {"role": "user","content": third_prompt},
         ]
     )
-
-    #result = manage_llm_response(response.content[0].text, "claude")
 
     decision, choice, reasoning, why = extract_changes(response.content[0].text)
 
@@ -119,20 +106,11 @@ def client():
         input_prompt = f_in.read()
 
     for idx, response_row in sample_response.iterrows():
-        # Ottieni l'id dalla risposta
         entry_id = response_row['id']
 
-        # Trova l'entry corrispondente in ATOMIC usando l'id
         atomic_entry = df.iloc[entry_id]
 
-        #if idx in ids:
-        #    continue
-        #print(row.to_json())
         json_content = atomic_entry.to_json(orient="records")
-
-        full_prompt = f"risposta scelta:{sample_response}\n\nATOMIC Entry:\n{json_content}"
-        #print(input_prompt + json_content)
-        #print(first_job_instructions)
 
         gemini_response = [response_row["gemini_mti"], response_row["gemini_r"], response_row["gemini_explanation"]]
         gpt_response = [response_row["gpt_mti"], response_row["gpt_r"], response_row["gpt_explanation"]]
@@ -151,7 +129,6 @@ def client():
             system_prompt=system_instructions
         )
         
-        print(gemini_result)
         gpt_result = gpt_parser(
             gpt_client=gpt_client,
             model="gpt-4o-mini",
@@ -165,8 +142,6 @@ def client():
             system_prompt=system_instructions
         )
 
-        print(gpt_result)
-
         claude_result = claude_parser(claude_client=claude_client, model="claude-sonnet-4-20250514",
             input_prompt=input_prompt + json_content,
             first_job_prompt=first_job_instructions,
@@ -177,9 +152,6 @@ def client():
             claude_response=claude_response,
             system_prompt=system_instructions
         )
-
-        print(claude_result)
-        #entry_row = new_entry_creator(index=idx, gpt_result=gpt_result, gemini_result=gemini_result, claude_result=claude_result)
 
         entry_row = [entry_id, gpt_result, gemini_result, claude_result]
         with open("../responses/changing_opinions.csv", mode="a", newline="", encoding="utf-8") as file:

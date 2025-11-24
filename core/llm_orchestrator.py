@@ -585,12 +585,12 @@ async def process_samples_parallel(orchestrator: LangChainLLMOrchestrator,
 
 @app.command()
 def run(
-        data_file: Path = typer.Option("../dataset/v4_atomic_all.csv", "--data", "-d", help="CSV file with data"),
-        output_file: Path = typer.Option("../responses/llm_responses.csv", "--output", "-o", help="Output CSV file"),
-        system_prompt: Path = typer.Option("../prompts/system_prompt", "--system", "-s", help="System prompt file"),
-        first_job: Path = typer.Option("../prompts/first_job_prompt", "--first", "-f", help="First job prompt file"),
-        second_job: Path = typer.Option("../prompts/second_job_prompt", "--second", "-j", help="Second job prompt file"),
-        entry: Path = typer.Option("../prompts/entry_prompt", "--entry", "-e", help="Entry prompt file"),
+        data_file: Path = typer.Option("dataset/v4_atomic_all.csv", "--data", "-d", help="CSV file with data"),
+        output_file: Path = typer.Option("responses/llm_responses.csv", "--output", "-o", help="Output CSV file"),
+        system_prompt: Path = typer.Option("prompts/system_prompt", "--system", "-s", help="System prompt file"),
+        first_job: Path = typer.Option("prompts/first_job_prompt", "--first", "-f", help="First job prompt file"),
+        second_job: Path = typer.Option("prompts/second_job_prompt", "--second", "-j", help="Second job prompt file"),
+        entry: Path = typer.Option("prompts/entry_prompt", "--entry", "-e", help="Entry prompt file"),
         providers: List[str] = typer.Option(["gemini", "gpt", "claude"], "--provider", "-p", help="Providers to use"),
         fallback: bool = typer.Option(True, "--fallback/--no-fallback", help="Use fallback"),
         sample_size: int = typer.Option(1, "--samples", "-n", help="Number of samples to process"),
